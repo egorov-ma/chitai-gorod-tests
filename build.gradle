@@ -64,7 +64,7 @@ dependencies {
             "org.slf4j:slf4j-simple:$slf4jVersion")
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     systemProperties(System.getProperties())
     useJUnitPlatform()
 
@@ -76,19 +76,19 @@ tasks.withType(Test) {
     }
 }
 
-task all_test(type: Test) {
+tasks.register('all_test', Test) {
     useJUnitPlatform {
         includeTags("API", "UI")
     }
 }
 
-task API_test(type: Test) {
+tasks.register('api_test', Test) {
     useJUnitPlatform {
         includeTags("API")
     }
 }
 
-task UI_test(type: Test) {
+tasks.register('ui_test', Test) {
     useJUnitPlatform {
         includeTags("UI")
     }

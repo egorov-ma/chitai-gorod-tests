@@ -22,7 +22,7 @@ public class ProjectConfiguration {
         if (webConfig.isRemote()) {
             Configuration.remote = String.valueOf(webConfig.remoteUrl());
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+            capabilities.setCapability("selenoid:options", Map.of(
                     "enableVNC", true,
                     "enableVideo", true,
                     "env", Arrays.asList("LANG=ru_RU.UTF-8", "LANGUAGE=ru:ru", "LC_ALL=ru_RU.UTF=8")

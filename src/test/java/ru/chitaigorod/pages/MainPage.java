@@ -11,11 +11,10 @@ public class MainPage {
 
 
     @Step("Открываем главную страницу - {url}")
-    public MainPage openMainPage(String url) {
+    public void openMainPage(String url) {
         open(url);
 //        executeJavaScript("$('#fixedban').remove()");
 //        executeJavaScript("$('footer').remove()");
-        return this;
     }
 
     @Step("Нажимаем кнопку 'Вход'")
