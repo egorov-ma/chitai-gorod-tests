@@ -15,7 +15,9 @@ public class CartApi {
 
     @Step("DELETE-запрос Очистить корзину")
     public void deleteCart() {
-        given(Specifications.requestSpec()).when().delete(CART);
+        given(Specifications.requestSpec())
+                .when()
+                .delete(CART);
     }
 
     @Step("GET-запрос Карзина кратко")

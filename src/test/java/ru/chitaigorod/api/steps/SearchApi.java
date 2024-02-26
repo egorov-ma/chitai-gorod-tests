@@ -6,14 +6,16 @@ import ru.chitaigorod.api.models.search.error.SearchErrorResponseModel;
 import ru.chitaigorod.api.specs.Specifications;
 
 import static io.restassured.RestAssured.given;
-import static ru.chitaigorod.api.data.EndpointsData.PRODURT_SEARCH;
+import static ru.chitaigorod.api.data.EndpointsData.SEARCH_PARAM;
+import static ru.chitaigorod.api.data.EndpointsData.PRODUCT_SEARCH;
 
 public class SearchApi {
-    @Step("GET-запрос Поиск")
+    @Step("GET-запрос Поиск по {item}")
     public SearchResponseModel getSearch(String item) {
         return given(Specifications.requestSpec())
+                .queryParam(SEARCH_PARAM, item)
                 .when()
-                .get(PRODURT_SEARCH + item)
+                .get(PRODUCT_SEARCH)
                 .then()
                 .spec(Specifications.responseSpec())
                 .statusCode(200)
@@ -24,7 +26,7 @@ public class SearchApi {
     public SearchErrorResponseModel getSearch() {
         return given(Specifications.requestSpec())
                 .when()
-                .get(PRODURT_SEARCH)
+                .get(PRODUCT_SEARCH)
                 .then()
                 .spec(Specifications.responseSpec())
                 .statusCode(400)

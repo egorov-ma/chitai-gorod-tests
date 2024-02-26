@@ -10,7 +10,7 @@ import static ru.chitaigorod.api.data.EndpointsData.PRODUCT;
 
 public class ProductApi {
 
-    @Step("POST-запрос Добавить в корзину продкут")
+    @Step("POST-запрос Добавить в корзину продкут {productId}")
     public void postAddItem(int productId) {
         ProductRequestModel product = new ProductRequestModel(productId);
         given(Specifications.requestSpec())
@@ -19,7 +19,7 @@ public class ProductApi {
                 .then().spec(Specifications.responseSpec());
     }
 
-    @Step("POST-запрос Добавить в корзину не корректный продкут")
+    @Step("POST-запрос Добавить в корзину не корректный продкут {productId}")
     public ProductErrorResponseModel postAddErrItem(int productId) {
         ProductRequestModel product = new ProductRequestModel(productId);
         return given(Specifications.requestSpec())
