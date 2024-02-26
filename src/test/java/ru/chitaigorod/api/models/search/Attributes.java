@@ -29,10 +29,12 @@ public class Attributes {
     private boolean isBookmarks;
     private int id;
     private Object startSale;
+    private String startSaleDesc;
     @JsonProperty("new")
     private boolean jsonMemberNew;
     private int oldPrice;
     private String picture;
+    private String preOrderDate;
     private String url;
     private boolean recommended;
     private boolean sale;
