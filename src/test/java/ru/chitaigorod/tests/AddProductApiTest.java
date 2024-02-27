@@ -9,9 +9,9 @@ import ru.chitaigorod.data.ProductsData;
 import ru.chitaigorod.models.cartshort.CartShortResponseModel;
 import ru.chitaigorod.models.product.error.ProductErrorResponseModel;
 import ru.chitaigorod.models.search.SearchResponseModel;
-import ru.chitaigorod.steps.CartApi;
-import ru.chitaigorod.steps.ProductApi;
-import ru.chitaigorod.steps.SearchApi;
+import ru.chitaigorod.steps.cart.GetCartApi;
+import ru.chitaigorod.steps.product.ProductApi;
+import ru.chitaigorod.steps.search.SearchApi;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -24,7 +24,7 @@ public class AddProductApiTest extends TestBase {
     String token = getAccessToken();
     ProductsData data = new ProductsData();
     SearchApi search = new SearchApi();
-    CartApi cart = new CartApi();
+    GetCartApi cart = new GetCartApi();
     ProductApi product = new ProductApi();
 
     @Test

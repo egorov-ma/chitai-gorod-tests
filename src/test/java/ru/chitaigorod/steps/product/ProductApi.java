@@ -1,4 +1,4 @@
-package ru.chitaigorod.steps;
+package ru.chitaigorod.steps.product;
 
 import io.qameta.allure.Step;
 import ru.chitaigorod.models.product.ProductRequestModel;

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import ru.chitaigorod.data.ProductsData;
 import ru.chitaigorod.models.search.SearchResponseModel;
 import ru.chitaigorod.models.search.error.SearchErrorResponseModel;
-import ru.chitaigorod.steps.SearchApi;
+import ru.chitaigorod.steps.search.SearchApi;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

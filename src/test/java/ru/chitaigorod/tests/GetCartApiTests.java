@@ -10,9 +10,9 @@ import ru.chitaigorod.data.ProductsData;
 import ru.chitaigorod.models.cart.CartResponseModel;
 import ru.chitaigorod.models.cart.error.CartErrorResponseModel;
 import ru.chitaigorod.models.search.SearchResponseModel;
-import ru.chitaigorod.steps.CartApi;
-import ru.chitaigorod.steps.ProductApi;
-import ru.chitaigorod.steps.SearchApi;
+import ru.chitaigorod.steps.cart.GetCartApi;
+import ru.chitaigorod.steps.product.ProductApi;
+import ru.chitaigorod.steps.search.SearchApi;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -24,7 +24,7 @@ import static ru.chitaigorod.helpers.AuthToken.getAccessToken;
 public class GetCartApiTests extends TestBase {
     String token = getAccessToken();
     ProductsData data = new ProductsData();
-    CartApi cart = new CartApi();
+    GetCartApi cart = new GetCartApi();
     ProductApi product = new ProductApi();
     SearchApi search = new SearchApi();
 

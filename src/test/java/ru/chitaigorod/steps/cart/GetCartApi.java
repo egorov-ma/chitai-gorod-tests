@@ -1,4 +1,4 @@
-package ru.chitaigorod.steps;
+package ru.chitaigorod.steps.cart;
 
 import io.qameta.allure.Step;
 import ru.chitaigorod.models.cart.CartResponseModel;
@@ -9,7 +9,7 @@ import ru.chitaigorod.specs.Specifications;
 
 import static io.restassured.RestAssured.given;
 
-public class CartApi {
+public class GetCartApi {
     @Step("DELETE-запрос Очистить корзину")
     public void deleteCart(String accessToken) {
         given(Specifications.requestSpec())

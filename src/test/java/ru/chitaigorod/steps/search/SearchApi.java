@@ -1,4 +1,4 @@
-package ru.chitaigorod.steps;
+package ru.chitaigorod.steps.search;
 
 import io.qameta.allure.Step;
 import ru.chitaigorod.data.EndpointsData;
