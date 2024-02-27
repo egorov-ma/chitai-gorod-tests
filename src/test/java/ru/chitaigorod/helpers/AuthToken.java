@@ -14,15 +14,18 @@ public class AuthToken {
     public static String getAccessToken() {
         // todo лютый костыль но локально работает а в jenkins не возвращается токен. надо будет поправть if()
         Map<String, String> allCookies = get("https://www.chitai-gorod.ru/").getCookies();
-        System.out.println("########");
+
+        System.out.println("###################################################");
         allCookies.forEach((key, value) -> System.out.println(key + ":" + value));
-        System.out.println("########");
+
         String accessToken = allCookies.get("access-token");
-        if (accessToken.isEmpty()) {
+
+        if (accessToken != null) {
             accessToken = accessToken.replace("%20", " ");
             return accessToken;
         } else {
             return TEMP_TOKEN;
         }
+
     }
 }
