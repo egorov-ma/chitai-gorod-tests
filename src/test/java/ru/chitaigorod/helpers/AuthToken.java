@@ -26,6 +26,5 @@ public class AuthToken {
         } else {
             return TEMP_TOKEN;
         }
-
     }
 }
