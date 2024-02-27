@@ -35,11 +35,16 @@ ____
 
 ### Запуск тестов из терминала
 
-Для запуска тестов локально использовать команду ниже:
+Для запуска тестов использовать команду ниже:
 ```
 ./gradlew clean api_test
 ```
-Для запуска тестов на Selenoid использовать команду ниже:
-```
-./gradlew clean test -Denv=prod 
-```
+
+---
+<a id="jenkins"></a>
+## <img width="20" style="vertical-align:middle" title="Jenkins" src="media/logo/jenkins.svg"> </a> Сборка в <a target="_blank" href="https://jenkins.autotests.cloud/job/chitai-gorod-tests/"> Jenkins </a>
+Для доступа в Jenkins необходима регистрация на ресурсе [Jenkins](https://jenkins.autotests.cloud/) Для запуска сборки необходимо перейти в раздел <code>Build with parameters</code>, выбрать необходимые параметры и нажать кнопку <code>Build</code>.
+<p align="center">
+<img title="jenkins" src="media/screenshots/screenshotsJenkins.png">
+</p>
+После выполнения сборки, в блоке <code>Build History</code> напротив номера сборки появятся значки <code>Allure Report</code>, при клике на которые откроется страница с сформированным html-отчетом.
