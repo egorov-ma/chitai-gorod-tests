@@ -55,3 +55,12 @@ ____
 <p align="center">
 <img title="Allure Report" src="media/screenshots/screenshotsAllure.png">
 </p>
+
+____
+<a id="tg"></a>
+## <img width="30" style="vertical-align:middle" title="Telegram" src="media/logo/telegram.svg"> Уведомления в Telegram с использованием бота
+После завершения сборки, бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом 
+о прогоне тестов в [специально настроенный чат](https://t.me/+m0gDb0Dy9ckwZTYy).
+<p align="center">
+<img width="40%" title="Telegram Notifications" src="media/screenshots/screenshotsTelegram.png">
+</p>
