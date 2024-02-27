@@ -12,25 +12,29 @@ import ru.chitaigorod.api.steps.SearchApi;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static ru.chitaigorod.api.data.ProductsData.getAccessToken;
 
 @Tags({@Tag("api"), @Tag("search")})
 @Story("Поиск продукта")
-public class SearchProductTests extends TestBase{
+public class SearchProductApiTests extends TestBase {
     ProductsData data = new ProductsData();
     SearchApi search = new SearchApi();
+    String token = getAccessToken();
 
     @Test
     @DisplayName("Успешный Поиск продукта")
     void searchProductTest() {
-        SearchResponseModel response = step("Ищем продукт", () -> search.getSearch(data.randomProductItem));
+        SearchResponseModel response = step("Ищем продукт", () ->
+                search.getSearch(data.randomProductItem, token));
         step("Проверка ответа, соответствия transformedPhrase", () ->
-                assertThat(response.getData().getAttributes().getTransformedPhrase()).isEqualTo(data.randomProductItem));
+                assertThat(response.getData().getAttributes().getTransformedPhrase())
+                        .isEqualTo(data.randomProductItem));
     }
 
     @Test
-    @DisplayName("Не успешный Поиск продукта")
+    @DisplayName("Поиск без параметра")
     void negativeSearchProductTest() {
-        SearchErrorResponseModel response = step("Ищем продукт", () -> search.getSearch());
+        SearchErrorResponseModel response = step("Ищем продукт", () -> search.getSearch(token));
         step("Проверка ответа, соответствия status", () ->
                 assertThat(response.getErrors().get(0).getStatus()).isEqualTo("400"));
         step("Проверка ответа, соответствия title", () ->
