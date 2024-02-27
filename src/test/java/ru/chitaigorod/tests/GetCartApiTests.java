@@ -21,7 +21,7 @@ import static ru.chitaigorod.helpers.AuthToken.getAccessToken;
 @Tags({@Tag("api"), @Tag("cart")})
 @Story("Проверка корзины")
 @DisplayName("Проверка корзины")
-public class CartApiTests extends TestBase {
+public class GetCartApiTests extends TestBase {
     String token = getAccessToken();
     ProductsData data = new ProductsData();
     CartApi cart = new CartApi();
