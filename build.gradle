@@ -83,3 +83,12 @@ tasks.register('api_test', Test) {
         includeTags("api")
     }
 }
+
+test {
+    options {
+        systemProperties(System.getProperties())
+    }
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
+    useJUnitPlatform()
+}
