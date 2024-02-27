@@ -9,13 +9,11 @@ import ru.chitaigorod.data.ProductsData;
 import ru.chitaigorod.models.cartshort.CartShortResponseModel;
 import ru.chitaigorod.models.product.error.ProductErrorResponseModel;
 import ru.chitaigorod.models.search.SearchResponseModel;
-import ru.chitaigorod.steps.cart.DeleteCartApi;
-import ru.chitaigorod.steps.cart.GetCartApi;
-import ru.chitaigorod.steps.product.ProductApi;
-import ru.chitaigorod.steps.search.SearchApi;
+import ru.chitaigorod.steps.cart.CartSteps;
+import ru.chitaigorod.steps.product.ProductSteps;
+import ru.chitaigorod.steps.search.SearchSteps;
 
 import static io.qameta.allure.Allure.step;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static ru.chitaigorod.helpers.AuthToken.getAccessToken;
 
 @Tags({@Tag("api"), @Tag("add")})
@@ -24,35 +22,32 @@ import static ru.chitaigorod.helpers.AuthToken.getAccessToken;
 public class AddProductApiTest extends TestBase {
     String token = getAccessToken();
     ProductsData data = new ProductsData();
-    SearchApi search = new SearchApi();
-    GetCartApi getCart = new GetCartApi();
-    DeleteCartApi deleteCart = new DeleteCartApi();
-    ProductApi product = new ProductApi();
+    SearchSteps searchSteps = new SearchSteps();
+    ProductSteps productSteps = new ProductSteps();
+    CartSteps cartSteps = new CartSteps();
 
     @Test
     @DisplayName("Успешное Добавление в корзину")
     void addProductTest() {
-        step("Подготавливаем, очищаем корзину", () -> deleteCart.allCart(token));
-        SearchResponseModel searchProduct = step("Ищем продукт", () -> search.getSearch(data.author, token));
-        step("Подготавливаем, добавляем продкут", () ->
-                product.postAddItem(searchProduct.getIncluded().get(0).getAttributes().getId(), token));
-        CartShortResponseModel response = step("Проверяем корзину", () -> getCart.getCartShort(token));
-        step("Проверка ответа, соответствия goodsId", () ->
-                assertThat(response.getData().getItems().get(0))
-                        .isEqualTo(searchProduct.getIncluded().get(0).getAttributes().getId()));
+        step("Подготавливаем, очищаем корзину", () -> cartSteps.deleteAllCart(token));
+        SearchResponseModel searchProduct = step("Ищем продукт", () -> searchSteps.searchItem(data.author, token));
+
+        step("Добавляем продкут", () -> productSteps.addItemById(searchProduct, token));
+
+        CartShortResponseModel response = step("Проверяем корзину", () -> cartSteps.getCartShort(token));
+        step("Проверка ответа, соответствия Id", () -> cartSteps.checkCartShortProductId(response, searchProduct));
     }
 
     @Test
     @DisplayName("Не успешное Добавление в корзину")
     void negativeAddProductTest() {
-        step("Подготавливаем, очищаем корзину", () -> deleteCart.allCart(token));
+        step("Подготавливаем, очищаем корзину", () -> cartSteps.deleteAllCart(token));
 
-        ProductErrorResponseModel responseErr = step("Добавляем продкут", () -> product.postAddErrItem(data.errorId, token));
-        step("Проверка ответа, соответствия goodsId", () ->
-                assertThat(responseErr.getMessage()).isEqualTo("данного товара не существует"));
+        ProductErrorResponseModel product = step("Добавляем продкут", () ->
+                productSteps.addErrItemById(data.errorId, token));
 
-        CartShortResponseModel response = step("Проверяем корзину", () -> getCart.getCartShort(token));
-        step("Проверка ответа, количество продуктов в корзине", () ->
-                assertThat(response.getData().getQuantity()).isEqualTo(0));
+        step("Проверка ответа, соответствия Id", () -> productSteps.checkErrMsg(product));
+        CartShortResponseModel response = step("Проверяем корзину", () -> cartSteps.getCartShort(token));
+        step("Проверка ответа, количество продуктов в корзине", () -> cartSteps.checkCartShortEmpty(response));
     }
 }

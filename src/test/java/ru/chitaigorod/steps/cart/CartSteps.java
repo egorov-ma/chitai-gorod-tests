@@ -42,7 +42,12 @@ public class CartSteps {
                 .isEqualTo(searchProduct.getIncluded().get(0).getAttributes().getId());
     }
 
-    public void checkCartShortNull(CartShortResponseModel cartShort) {
+    public void checkCartShortProductId(CartShortResponseModel response, SearchResponseModel searchProduct) {
+        assertThat(response.getData().getItems().get(0))
+                .isEqualTo(searchProduct.getIncluded().get(0).getAttributes().getId());
+    }
+
+    public void checkCartShortEmpty(CartShortResponseModel cartShort) {
         assertThat(cartShort.getData().getQuantity()).isEqualTo(0);
     }
 }

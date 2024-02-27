@@ -23,9 +23,9 @@ import static ru.chitaigorod.helpers.AuthToken.getAccessToken;
 public class DeleteCartApiTests extends TestBase {
     String token = getAccessToken();
     ProductsData data = new ProductsData();
-    CartSteps cartSteps = new CartSteps();
     SearchSteps searchSteps = new SearchSteps();
     ProductSteps productSteps = new ProductSteps();
+    CartSteps cartSteps = new CartSteps();
 
     @Test
     @DisplayName("Удаление продкута из корзины")
@@ -39,7 +39,7 @@ public class DeleteCartApiTests extends TestBase {
         step("Удаляем продукт", () -> cartSteps.deleteItemById(cart, token));
         CartShortResponseModel cartShort = step("Проверяем корзину", () -> cartSteps.getCartShort(token));
 
-        step("Проверка ответа, корзина пустая", () -> cartSteps.checkCartShortNull(cartShort));
+        step("Проверка ответа, корзина пустая", () -> cartSteps.checkCartShortEmpty(cartShort));
     }
 
     @Test
