@@ -76,20 +76,8 @@ tasks.withType(Test).configureEach {
     }
 }
 
-tasks.register('all_test', Test) {
-    useJUnitPlatform {
-        includeTags("API", "UI")
-    }
-}
-
 tasks.register('api_test', Test) {
     useJUnitPlatform {
-        includeTags("API")
-    }
-}
-
-tasks.register('ui_test', Test) {
-    useJUnitPlatform {
-        includeTags("UI")
+        includeTags("api")
     }
 }
