@@ -18,7 +18,7 @@ public class AuthToken {
         allCookies.forEach((key, value) -> System.out.println(key + ":" + value));
         System.out.println("########");
         String accessToken = allCookies.get("access-token");
-        if (!accessToken.isEmpty()) {
+        if (accessToken.isEmpty()) {
             accessToken = accessToken.replace("%20", " ");
             return accessToken;
         } else {
