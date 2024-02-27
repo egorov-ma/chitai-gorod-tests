@@ -48,3 +48,10 @@ ____
 <img title="jenkins" src="media/screenshots/screenshotsJenkins.png">
 </p>
 После выполнения сборки, в блоке <code>Build History</code> напротив номера сборки появятся значки <code>Allure Report</code>, при клике на которые откроется страница с сформированным html-отчетом.
+
+____
+<a id="allureReport"></a>
+## <img width="30" style="vertical-align:middle" title="Allure Report" src="media/logo/allure.svg"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/job/chitai-gorod-tests/8/allure/"> Allure-отчета </a>
+<p align="center">
+<img title="Allure Report" src="media/screenshots/screenshotsAllure.png">
+</p>
