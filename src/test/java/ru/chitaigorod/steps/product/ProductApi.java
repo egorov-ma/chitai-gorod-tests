@@ -3,10 +3,10 @@ package ru.chitaigorod.steps.product;
 import io.qameta.allure.Step;
 import ru.chitaigorod.models.product.ProductRequestModel;
 import ru.chitaigorod.models.product.error.ProductErrorResponseModel;
-import ru.chitaigorod.data.EndpointsData;
 import ru.chitaigorod.specs.Specifications;
 
 import static io.restassured.RestAssured.given;
+import static ru.chitaigorod.data.EndpointsData.PRODUCT;
 
 public class ProductApi {
     @Step("POST-запрос Добавить в корзину продкут {productId}")
@@ -16,9 +16,10 @@ public class ProductApi {
                 .header("authorization", accessToken)
                 .body(product)
                 .when()
-                .post(EndpointsData.PRODUCT)
+                .post(PRODUCT)
                 .then()
-                .spec(Specifications.responseSpec());
+                .spec(Specifications.responseSpec())
+                .statusCode(200);
     }
 
     @Step("POST-запрос Добавить в корзину не корректный продкут {productId}")
@@ -27,7 +28,7 @@ public class ProductApi {
         return given(Specifications.requestSpec())
                 .header("authorization", accessToken)
                 .body(product)
-                .when().post(EndpointsData.PRODUCT)
+                .when().post(PRODUCT)
                 .then().spec(Specifications.responseSpec())
                 .statusCode(500)
                 .extract().as(ProductErrorResponseModel.class);

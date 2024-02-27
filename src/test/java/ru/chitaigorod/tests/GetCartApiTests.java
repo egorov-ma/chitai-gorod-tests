@@ -10,6 +10,7 @@ import ru.chitaigorod.data.ProductsData;
 import ru.chitaigorod.models.cart.CartResponseModel;
 import ru.chitaigorod.models.cart.error.CartErrorResponseModel;
 import ru.chitaigorod.models.search.SearchResponseModel;
+import ru.chitaigorod.steps.cart.DeleteCartApi;
 import ru.chitaigorod.steps.cart.GetCartApi;
 import ru.chitaigorod.steps.product.ProductApi;
 import ru.chitaigorod.steps.search.SearchApi;
@@ -25,13 +26,14 @@ public class GetCartApiTests extends TestBase {
     String token = getAccessToken();
     ProductsData data = new ProductsData();
     GetCartApi cart = new GetCartApi();
+    DeleteCartApi deleteCart = new DeleteCartApi();
     ProductApi product = new ProductApi();
     SearchApi search = new SearchApi();
 
     @Test
     @DisplayName("Успешная проверка состава корзины")
     void cartTest() {
-        step("Подготавливаем, очищаем корзину", () -> cart.deleteCart(token));
+        step("Подготавливаем, очищаем корзину", () -> deleteCart.allCart(token));
         SearchResponseModel searchProduct = step("Ищем продукт", () -> search.getSearch(data.author, token));
         step("Подготавливаем, добавляем продкут", () ->
                 product.postAddItem(searchProduct.getIncluded().get(0).getAttributes().getId(), token));
@@ -45,7 +47,7 @@ public class GetCartApiTests extends TestBase {
     @Test
     @DisplayName("Не успешный просмотр состава корзины")
     void negativeCartTest() {
-        step("Подготавливаем, очищаем корзину", () -> cart.deleteCart(token));
+        step("Подготавливаем, очищаем корзину", () -> deleteCart.allCart(token));
         CartErrorResponseModel response = step("Проверяем корзину", () -> cart.getErrCart(token));
         step("Проверка ответа, соответствия cost", () ->
                 assertThat(response.getCost()).isEqualTo(0));

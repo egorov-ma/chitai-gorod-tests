@@ -4,26 +4,19 @@ import io.qameta.allure.Step;
 import ru.chitaigorod.models.cart.CartResponseModel;
 import ru.chitaigorod.models.cart.error.CartErrorResponseModel;
 import ru.chitaigorod.models.cartshort.CartShortResponseModel;
-import ru.chitaigorod.data.EndpointsData;
 import ru.chitaigorod.specs.Specifications;
 
 import static io.restassured.RestAssured.given;
+import static ru.chitaigorod.data.EndpointsData.CART;
+import static ru.chitaigorod.data.EndpointsData.CART_SHORT;
 
 public class GetCartApi {
-    @Step("DELETE-запрос Очистить корзину")
-    public void deleteCart(String accessToken) {
-        given(Specifications.requestSpec())
-                .header("authorization", accessToken)
-                .when()
-                .delete(EndpointsData.CART);
-    }
-
     @Step("GET-запрос Карзина кратко")
     public CartShortResponseModel getCartShort(String accessToken) {
         return given(Specifications.requestSpec())
                 .header("authorization", accessToken)
                 .when()
-                .get(EndpointsData.CART_SHORT)
+                .get(CART_SHORT)
                 .then()
                 .spec(Specifications.responseSpec())
                 .statusCode(200)
@@ -35,7 +28,7 @@ public class GetCartApi {
         return given(Specifications.requestSpec())
                 .header("authorization", accessToken)
                 .when()
-                .get(EndpointsData.CART)
+                .get(CART)
                 .then()
                 .spec(Specifications.responseSpec())
                 .statusCode(200)
@@ -47,7 +40,7 @@ public class GetCartApi {
         return given(Specifications.requestSpec())
                 .header("authorization", accessToken)
                 .when()
-                .get(EndpointsData.CART)
+                .get(CART)
                 .then()
                 .spec(Specifications.responseSpec())
                 .statusCode(200)

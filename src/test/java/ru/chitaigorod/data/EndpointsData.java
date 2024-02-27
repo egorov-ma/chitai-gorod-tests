@@ -5,5 +5,6 @@ public class EndpointsData {
             CART_SHORT = "/v1/cart/short",
             PRODUCT = "/v1/cart/product",
             PRODUCT_SEARCH = "/v2/search/product",
+            DELETE_ITEM = "/v1/cart/product/",
             SEARCH_PARAM = "phrase";
 }
