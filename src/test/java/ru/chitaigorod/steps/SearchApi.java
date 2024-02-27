@@ -1,9 +1,9 @@
 package ru.chitaigorod.steps;
 
 import io.qameta.allure.Step;
+import ru.chitaigorod.data.EndpointsData;
 import ru.chitaigorod.models.search.SearchResponseModel;
 import ru.chitaigorod.models.search.error.SearchErrorResponseModel;
-import ru.chitaigorod.data.EndpointsData;
 import ru.chitaigorod.specs.Specifications;
 
 import static io.restassured.RestAssured.given;
