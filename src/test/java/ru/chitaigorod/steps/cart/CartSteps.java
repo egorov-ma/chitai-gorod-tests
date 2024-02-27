@@ -41,8 +41,6 @@ public class CartSteps {
         return getCart.getErrCart(token);
     }
 
-
-
     public void checkCartProductId(CartResponseModel cart, SearchResponseModel searchProduct) {
         assertThat(cart.getProducts().get(0).getGoodsId())
                 .isEqualTo(searchProduct.getIncluded().get(0).getAttributes().getId());
