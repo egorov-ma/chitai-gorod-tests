@@ -1,6 +1,7 @@
 package ru.chitaigorod.steps.cart;
 
 import ru.chitaigorod.models.cart.CartResponseModel;
+import ru.chitaigorod.models.cart.error.CartErrorResponseModel;
 import ru.chitaigorod.models.cartshort.CartShortResponseModel;
 import ru.chitaigorod.models.deleteCart.DeleteCartResponseModel;
 import ru.chitaigorod.models.search.SearchResponseModel;
@@ -11,7 +12,6 @@ import static ru.chitaigorod.data.ErrorsData.ERR_DELETE;
 public class CartSteps {
     GetCartApi getCart = new GetCartApi();
     DeleteCartApi deleteCart = new DeleteCartApi();
-
 
     public void deleteAllCart(String token) {
         deleteCart.allCart(token);
@@ -37,6 +37,12 @@ public class CartSteps {
         return getCart.getCartShort(token);
     }
 
+    public CartErrorResponseModel getCartErr(String token) {
+        return getCart.getErrCart(token);
+    }
+
+
+
     public void checkCartProductId(CartResponseModel cart, SearchResponseModel searchProduct) {
         assertThat(cart.getProducts().get(0).getGoodsId())
                 .isEqualTo(searchProduct.getIncluded().get(0).getAttributes().getId());
@@ -49,5 +55,9 @@ public class CartSteps {
 
     public void checkCartShortEmpty(CartShortResponseModel cartShort) {
         assertThat(cartShort.getData().getQuantity()).isEqualTo(0);
+    }
+
+    public void checkCartCostNull(CartErrorResponseModel response) {
+        assertThat(response.getCost()).isEqualTo(0);
     }
 }
