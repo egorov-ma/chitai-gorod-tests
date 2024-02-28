@@ -17,7 +17,7 @@ public class AuthToken {
         // todo лютый костыль но локально работает а в jenkins не возвращается токен. надо будет поправть if()
         Map<String, String> allCookies = get("https://www.chitai-gorod.ru/").getCookies();
         Response response = get("https://www.chitai-gorod.ru/");
-        System.out.println(response.getCookies().get("access-token"));
+        System.out.println(response);
         System.out.println("###################################################");
         allCookies.forEach((key, value) -> System.out.println(key + ":" + value));
 
