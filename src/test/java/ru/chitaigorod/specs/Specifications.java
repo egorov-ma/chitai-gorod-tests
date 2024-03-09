@@ -20,11 +20,39 @@ public class Specifications {
                 .build();
     }
 
-    public static ResponseSpecification responseSpec() {
+    public static ResponseSpecification responseSpec200() {
         return new ResponseSpecBuilder()
                 .log(LogDetail.STATUS)
                 .log(LogDetail.HEADERS)
                 .log(LogDetail.BODY)
+                .expectStatusCode(200)
+                .build();
+    }
+
+    public static ResponseSpecification responseSpec400() {
+        return new ResponseSpecBuilder()
+                .log(LogDetail.STATUS)
+                .log(LogDetail.HEADERS)
+                .log(LogDetail.BODY)
+                .expectStatusCode(400)
+                .build();
+    }
+
+    public static ResponseSpecification responseSpec404() {
+        return new ResponseSpecBuilder()
+                .log(LogDetail.STATUS)
+                .log(LogDetail.HEADERS)
+                .log(LogDetail.BODY)
+                .expectStatusCode(404)
+                .build();
+    }
+
+    public static ResponseSpecification responseSpec500() {
+        return new ResponseSpecBuilder()
+                .log(LogDetail.STATUS)
+                .log(LogDetail.HEADERS)
+                .log(LogDetail.BODY)
+                .expectStatusCode(500)
                 .build();
     }
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import ru.chitaigorod.data.ProductsData;
-import ru.chitaigorod.models.cartshort.CartShortResponseModel;
+import ru.chitaigorod.models.cartShort.CartShortResponseModel;
 import ru.chitaigorod.models.product.error.ProductErrorResponseModel;
 import ru.chitaigorod.models.search.SearchResponseModel;
 import ru.chitaigorod.steps.cart.CartSteps;

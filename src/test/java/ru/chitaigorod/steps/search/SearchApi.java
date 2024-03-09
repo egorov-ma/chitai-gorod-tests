@@ -18,8 +18,7 @@ public class SearchApi {
                 .when()
                 .get(PRODUCT_SEARCH)
                 .then()
-                .spec(Specifications.responseSpec())
-                .statusCode(200)
+                .spec(Specifications.responseSpec200())
                 .extract().as(SearchResponseModel.class);
     }
 
@@ -30,8 +29,7 @@ public class SearchApi {
                 .when()
                 .get(PRODUCT_SEARCH)
                 .then()
-                .spec(Specifications.responseSpec())
-                .statusCode(400)
+                .spec(Specifications.responseSpec400())
                 .extract().as(SearchErrorResponseModel.class);
     }
 }

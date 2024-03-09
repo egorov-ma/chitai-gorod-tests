@@ -3,7 +3,7 @@ package ru.chitaigorod.steps.cart;
 import io.qameta.allure.Step;
 import ru.chitaigorod.models.cart.CartResponseModel;
 import ru.chitaigorod.models.cart.error.CartErrorResponseModel;
-import ru.chitaigorod.models.cartshort.CartShortResponseModel;
+import ru.chitaigorod.models.cartShort.CartShortResponseModel;
 import ru.chitaigorod.specs.Specifications;
 
 import static io.restassured.RestAssured.given;
@@ -18,8 +18,7 @@ public class GetCartApi {
                 .when()
                 .get(CART_SHORT)
                 .then()
-                .spec(Specifications.responseSpec())
-                .statusCode(200)
+                .spec(Specifications.responseSpec200())
                 .extract().as(CartShortResponseModel.class);
     }
 
@@ -30,8 +29,7 @@ public class GetCartApi {
                 .when()
                 .get(CART)
                 .then()
-                .spec(Specifications.responseSpec())
-                .statusCode(200)
+                .spec(Specifications.responseSpec200())
                 .extract().as(CartResponseModel.class);
     }
 
@@ -42,8 +40,7 @@ public class GetCartApi {
                 .when()
                 .get(CART)
                 .then()
-                .spec(Specifications.responseSpec())
-                .statusCode(200)
+                .spec(Specifications.responseSpec200())
                 .extract().as(CartErrorResponseModel.class);
     }
 }

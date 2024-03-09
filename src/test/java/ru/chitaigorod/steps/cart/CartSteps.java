@@ -2,7 +2,7 @@ package ru.chitaigorod.steps.cart;
 
 import ru.chitaigorod.models.cart.CartResponseModel;
 import ru.chitaigorod.models.cart.error.CartErrorResponseModel;
-import ru.chitaigorod.models.cartshort.CartShortResponseModel;
+import ru.chitaigorod.models.cartShort.CartShortResponseModel;
 import ru.chitaigorod.models.deleteCart.DeleteCartResponseModel;
 import ru.chitaigorod.models.search.SearchResponseModel;
 

@@ -31,8 +31,7 @@ public class DeleteCartApi {
                 .when()
                 .delete(DELETE_ITEM + item)
                 .then()
-                .spec(Specifications.responseSpec())
-                .statusCode(404)
+                .spec(Specifications.responseSpec404())
                 .extract().as(DeleteCartResponseModel.class);
     }
 }

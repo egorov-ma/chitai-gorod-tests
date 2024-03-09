@@ -1,4 +1,4 @@
-package ru.chitaigorod.models.cartshort;
+package ru.chitaigorod.models.cartShort;
 
 import lombok.Data;
 

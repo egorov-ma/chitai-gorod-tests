@@ -18,8 +18,7 @@ public class ProductApi {
                 .when()
                 .post(PRODUCT)
                 .then()
-                .spec(Specifications.responseSpec())
-                .statusCode(200);
+                .spec(Specifications.responseSpec200());
     }
 
     @Step("POST-запрос Добавить в корзину не корректный продкут {productId}")
@@ -29,8 +28,7 @@ public class ProductApi {
                 .header("authorization", accessToken)
                 .body(product)
                 .when().post(PRODUCT)
-                .then().spec(Specifications.responseSpec())
-                .statusCode(500)
+                .then().spec(Specifications.responseSpec500())
                 .extract().as(ProductErrorResponseModel.class);
     }
 }
